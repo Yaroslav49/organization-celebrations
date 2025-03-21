@@ -1,0 +1,77 @@
+<div class="cloud main-content-page">
+    <div class="horizontal-list">
+        <div name="left-part-card" class="vertical-list left-part-card">
+            <img [src]="master.personalPhoto" width="150" height="auto" alt="Avatar_big" class="avatar">
+            <div class="horizontal-center-list">
+                <tui-icon
+                    icon="@tui.star"
+                    [style.color]="'var(--gray)'"
+                    [background]="'@tui.star-filled'"
+                    [style.background]="'var(--yellow)'"
+                    class="star"
+                />
+                <h2 class="rating-header"> {{master.averageRating.toFixed(1)}} </h2>
+            </div>
+            <span class="sub-text"> {{master.ratingCount}} {{getMarksEnding(master.ratingCount)}}</span>
+            @if (master.passportVerified) {
+                <div class="horizontal-center-list">
+                    <tui-icon
+                        icon="@tui.badge-check"
+                        [style.color]="'var(--violet)'"
+                        class="icon"
+                    />
+                    <span class="text-without-margin">Паспорт проверен</span>
+                </div> 
+            }
+            @if (master.contractWork) {
+                <div class="horizontal-center-list">
+                    <tui-icon
+                        icon="@tui.file-check-2"
+                        [style.color]="'var(--violet)'"                     
+                        class="icon"
+                    />
+                    <span class="text-without-margin">Работает по договору</span>
+                </div> 
+            }         
+        </div>
+
+        <div name="right-part-card" class="vertical-list full-width">
+            <h2 class="name-header">{{master.fullName}}</h2>          
+            <div class="horizontal-list">
+                <span class="sub-text"> • {{master.districts.join(', ')}}
+                @if (master.onlineStatus) {
+                    • В сети
+                }
+                </span>
+            </div>      
+            <span class="main-text">{{master.description}}</span>
+            <div class="container-photo">
+                @for (photo of master.photos; track $index) {
+                    <a [href]="photo">
+                        <img [src]="photo" width="75" height="75" class="photo">
+                    </a>
+                }
+            </div>
+            @for (service of master.services; track $index) {
+                <div class="horizontal-list full-width">
+                    <span class="main-text">{{getServiceDisplayName(service.serviceName)}}</span>
+                    <hr class="horizontal-line">
+                    <span class="main-text inline-text">{{service.cost}} ₽</span>
+                </div>
+            }
+            <div class="horizontal-list">
+                <button tuiButton class="light-button right-margin">
+                    <tui-icon
+                        icon="@tui.message-circle-more"
+                        [style.color]="'black'"                     
+                        class="icon-without-margin"
+                    />
+                    Чат
+                </button>
+                <button tuiButton class="light-button">
+                    Предложить заказ
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

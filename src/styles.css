@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* global colors */
+:root {
+    --light-yellow: #FFFFE8;
+    --light-gray: #F5F5F5;
+    --gray: gray;
+    --white: white;
+    --shadow-gray: #d7d7d7;
+    --violet: #9E4DF0;
+    --dark-violet: #8141c2;
+    --light-violet: #E6D7F5;
+    --super-light-violet: #f1ebf8;
+    --yellow: #EEF054;
+    --light-yellow: #FFFFE8;
+    --dark-yellow: #CCCE49;
+    --main-font: 'Arial';
+}
+
+/* other */
+.bg {
+    /*height: calc(100vh - 100px);*/
+    background-color: var(--light-gray);
+}
+body {
+    margin: 0;
+}
+.right-margin {
+    margin-right: 1rem;
+}
+
+/* blocks */
+.cloud {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 0 10px var(--shadow-gray);
+    margin: 1rem;
+    padding: 1rem;
+}
+
+/* buttons */
+[tuiAppearance].violet-button {
+    background-color: var(--violet);
+}
+[tuiAppearance].violet-button:hover {
+    background-color: var(--dark-violet);
+}
+
+[tuiAppearance].yellow-button {
+    background-color: var(--yellow);
+}
+[tuiAppearance].yellow-button:hover {
+    background-color: var(--dark-yellow);
+}
+
+[tuiAppearance].light-button {
+    background-color: var(--super-light-violet);
+    border-radius: 2em;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    color: black;
+}
+[tuiAppearance].light-button:hover {
+    background-color: var(--light-violet);
+}
+
+

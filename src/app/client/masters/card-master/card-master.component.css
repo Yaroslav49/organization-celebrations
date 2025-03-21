@@ -1,0 +1,128 @@
+
+/* containers */
+.horizontal-list, .container-photo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.horizontal-center-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.container-photo {
+    flex-wrap: wrap;
+}
+
+.main-content-page {
+    max-width: 85vw;
+    width: max(60vw, 600px)
+}
+
+/* images */
+.avatar {
+    border-radius: 5px;
+}
+.photo {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+/* texts */
+.name-header {
+    color: var(--violet);
+    font-weight: bold;
+    font-family: var(--main-font);
+    margin-top: 0;
+}
+.rating-header {
+    color: var(--gray);
+    font-size: 1.5rem;
+    font-family: var(--main-font);
+    font-weight: lighter;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+.sub-text {
+    color: var(--gray);
+    font-family: var(--main-font);
+    margin-bottom: 1em;
+}
+.main-text {
+    font-family: var(--main-font);
+    margin-bottom: 1em;
+}
+.violet-text {
+    color: var(--violet);
+    font-weight: bold;
+    font-family: var(--main-font);
+    margin-bottom: 1em;
+}
+.text-without-margin {
+    font-family: var(--main-font);
+}
+.sub-text-without-margin {
+    color: var(--gray);
+    font-family: var(--main-font);
+}
+
+.status {
+    font-family: var(--main-font);
+    color: var(--gray);
+    margin-left: 0.5rem;
+}
+.status-point {
+    font-family: var(--main-font);
+    color: var(--gray);
+    margin-left: 0.5rem;
+    margin-right: 0.25rem;
+}
+.inline-text {
+    white-space: nowrap;
+}
+.star {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+}
+[tuiAppearance].star {
+    font-size: 1.5rem;
+}
+.icon {
+    margin: 0.5rem;
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+[tuiAppearance].icon {
+    font-size: 1rem;
+}
+[tuiAppearance].icon-without-margin {
+    font-size: 1rem;
+}
+
+/* other */
+.left-part-card {
+    width:150px; 
+    margin-right: 1rem;
+}
+.horizontal-line {
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    border: none; 
+    border-bottom: 2px dotted var(--light-violet);
+}
+.full-width {
+    width: 100%;
+}

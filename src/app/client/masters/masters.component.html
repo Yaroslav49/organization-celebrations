@@ -1,0 +1,15 @@
+<header>
+    <app-header></app-header>
+</header>
+
+<main class="bg">
+    <div class="bg vertical-list">
+        @for (master of masters; track master.id) {
+            <card-master [master] = master></card-master>
+        }
+    </div>
+</main>
+
+<footer>
+
+</footer>
