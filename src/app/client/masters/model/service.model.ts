@@ -1,12 +1,17 @@
 export interface Service{
     serviceName: ServiceName;
     cost: number;
-
-    
 }
 
-export const enum ServiceName {
-    DECORATOR, SOUND_ENGINEER, LIGHT_ENGINEER, PHOTOGRAPHER, VIDEOGRAPHER, CHEF, WAITER, HOST
+export enum ServiceName {
+    DECORATOR = "DECORATOR",
+    SOUND_ENGINEER = "SOUND_ENGINEER",
+    LIGHT_ENGINEER = "LIGHT_ENGINEER",
+    PHOTOGRAPHER = "PHOTOGRAPHER",
+    VIDEOGRAPHER = "VIDEOGRAPHER",
+    CHEF = "CHEF",
+    WAITER = "WAITER",
+    HOST = "HOST"
 }
 
 export const ServiceNameDisplay: { [key in ServiceName]: string } = {

@@ -2,14 +2,35 @@
     <app-header></app-header>
 </header>
 
-<main class="bg">
-    <div class="bg vertical-list">
+<main class="bg main-page">
+    <div class="vertical-list" id="masters-cards">
+        <h2 class="header-text">{{getServiceDisplayName(category)}}</h2>
         @for (master of masters; track master.id) {
-            <card-master [master] = master></card-master>
+            <card-master [master]=master [category]=category></card-master>
+        } @empty {
+            <div class="cloud sorry-card main-text">
+                <p class="main-text">К сожалению, мы не нашли подходящего мастера</p>
+                <img src="sorry.png" class="photo">
+                <p class="main-text">Попробуйте создать заказ</p>             
+            </div>
         }
+    </div>
+    
+    <div class="vertical-list" class="filters" id="filters">
+        <a class="link" routerLink="/masters/DECORATOR">Декоратор</a>
+        <a class="link" routerLink="/masters/HOST">Ведущий</a>
+        <p class="sub-header-text">Кейтринг</p>
+        <a class="link" routerLink="/masters/CHEF">Повар</a>
+        <a class="link" routerLink="/masters/WAITER">Официант</a>
+        <p class="sub-header-text">Съёмка мероприятий</p>
+        <a class="link" routerLink="/masters/PHOTOGRAPHER">Фотограф</a>
+        <a class="link" routerLink="/masters/VIDEOGRAPHER">Видеограф</a>
+        <p class="sub-header-text">Технический отдел</p>
+        <a class="link" routerLink="/masters/SOUND_ENGINEER">Звукорежиссёр</a>
+        <a class="link" routerLink="/masters/LIGHT_ENGINEER">Светорежиссёр</a>
     </div>
 </main>
 
 <footer>
-
+    <app-footer></app-footer>
 </footer>

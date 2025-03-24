@@ -1,7 +1,7 @@
 <div class="cloud main-content-page">
     <div class="horizontal-list">
         <div name="left-part-card" class="vertical-list left-part-card">
-            <img [src]="master.personalPhoto" width="150" height="auto" alt="Avatar_big" class="avatar">
+            <img [src]="master.personalPhoto" alt="avatar" class="avatar">
             <div class="horizontal-center-list">
                 <tui-icon
                     icon="@tui.star"
@@ -48,11 +48,11 @@
             <div class="container-photo">
                 @for (photo of master.photos; track $index) {
                     <a [href]="photo">
-                        <img [src]="photo" width="75" height="75" class="photo">
+                        <img [src]="photo" class="photo">
                     </a>
                 }
             </div>
-            @for (service of master.services; track $index) {
+            @for (service of sortServices(master.services); track $index) {
                 <div class="horizontal-list full-width">
                     <span class="main-text">{{getServiceDisplayName(service.serviceName)}}</span>
                     <hr class="horizontal-line">

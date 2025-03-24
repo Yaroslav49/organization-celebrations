@@ -1,0 +1,18 @@
+.footer-bg {
+    background: #69537e;
+}
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.main-text {
+    font-family: var(--main-font);
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--white);
+    margin-top: 0.5em;
+}

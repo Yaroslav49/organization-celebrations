@@ -22,13 +22,17 @@
     flex-wrap: wrap;
 }
 
+/* регулирует ширину карточки мастера */
 .main-content-page {
     max-width: 85vw;
-    width: max(60vw, 600px)
+    width: min(65vw, 760px)
 }
 
 /* images */
 .avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 5px;
 }
 .photo {
@@ -37,6 +41,9 @@
     object-fit: cover;
     border-radius: 5px;
     margin: 5px;
+}
+.photo:hover {
+    scale: 2;
 }
 
 /* texts */
@@ -112,7 +119,7 @@
 
 /* other */
 .left-part-card {
-    width:150px; 
+    width: 150px; 
     margin-right: 1rem;
 }
 .horizontal-line {
