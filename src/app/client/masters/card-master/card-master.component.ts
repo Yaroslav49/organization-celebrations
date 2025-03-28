@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Master } from '../model/master.model';
 import { Service, ServiceName, ServiceNameDisplay } from '../model/service.model';
-import { TuiIcon, TuiButton } from '@taiga-ui/core';
+import { TuiIcon, TuiButton, TuiDialogService } from '@taiga-ui/core';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'card-master',
@@ -12,6 +13,17 @@ import { TuiIcon, TuiButton } from '@taiga-ui/core';
 export class CardMasterComponent {
    @Input() master!: Master;
    @Input() category!: ServiceName;
+
+   private readonly dialogs = inject(TuiDialogService);
+
+   protected showDialog(url: string): void {
+      this.dialogs
+         .open(
+            '<br><img src="' + url + '" class="big-photo" width="100%">',
+            { size: 'l', data: {button: 'Закрыть'} },
+         )
+         .subscribe();
+   }
 
    getServiceDisplayName(serviceName: ServiceName): string {
       return ServiceNameDisplay[serviceName];

@@ -1,6 +1,11 @@
 <div class="header-bg">
     <div class="header">
         <img src="/mini-logo.png" class="icon">
+        @if (!isAuthenticated()) {
+            <button tuiButton size="m" class="light-small-button auth-button" (click)="showDialog()">
+                Войти
+            </button>
+        }
+
     </div>
 </div>
-

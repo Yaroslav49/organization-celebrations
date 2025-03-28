@@ -47,9 +47,7 @@
             <span class="main-text">{{master.description}}</span>
             <div class="container-photo">
                 @for (photo of master.photos; track $index) {
-                    <a [href]="photo">
-                        <img [src]="photo" class="photo">
-                    </a>
+                    <img [src]="photo" class="photo" (click)="showDialog(photo)">
                 }
             </div>
             @for (service of sortServices(master.services); track $index) {

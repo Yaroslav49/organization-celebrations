@@ -6,16 +6,16 @@
     <div class="vertical-list" id="masters-cards">
         <h2 class="header-text">{{getServiceDisplayName(category)}}</h2>
         @for (master of masters; track master.id) {
-            <card-master [master]=master [category]=category></card-master>
+        <card-master [master]=master [category]=category></card-master>
         } @empty {
-            <div class="cloud sorry-card main-text">
-                <p class="main-text">К сожалению, мы не нашли подходящего мастера</p>
-                <img src="sorry.png" class="photo">
-                <p class="main-text">Попробуйте создать заказ</p>             
-            </div>
+        <div class="cloud sorry-card main-text">
+            <p class="main-text">К сожалению, мы не нашли подходящего мастера</p>
+            <img src="sorry.png" class="photo">
+            <p class="main-text">Попробуйте создать заказ</p>
+        </div>
         }
     </div>
-    
+
     <div class="vertical-list" class="filters" id="filters">
         <a class="link" routerLink="/masters/DECORATOR">Декоратор</a>
         <a class="link" routerLink="/masters/HOST">Ведущий</a>

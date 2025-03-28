@@ -15,8 +15,9 @@
     --yellow: #EEF054;
     --light-yellow: #FFFFE8;
     --dark-yellow: #CCCE49;
+    --orange: #ff6600;
+
     --main-font: 'Arial';
-    --red: #ff6600;
 }
 
 /* other */
@@ -44,7 +45,7 @@ body {
 [tuiAppearance].violet-button {
     background-color: var(--violet);
 }
-[tuiAppearance].violet-button:hover {
+[tuiAppearance].violet-button:hover, [tuiAppearance].violet-button:disabled {
     background-color: var(--dark-violet);
 }
 
@@ -65,5 +66,3 @@ body {
 [tuiAppearance].light-button:hover {
     background-color: var(--light-violet);
 }
-
-

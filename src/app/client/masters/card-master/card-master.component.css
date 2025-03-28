@@ -35,6 +35,12 @@
     object-fit: cover;
     border-radius: 5px;
 }
+.big-photo {
+    object-fit: cover;
+    border-radius: 5px;
+    width: 50%;
+    height: auto;
+}
 .photo {
     width: 75px;
     height: 75px;
