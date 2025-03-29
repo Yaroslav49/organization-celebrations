@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { TuiButton, tuiDialog } from '@taiga-ui/core';
 import { AuthorizationComponent } from '../authorization/authorization.component';
 import { AuthorizationService } from '../../services/authorization.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
    selector: 'app-header',
-   imports: [TuiButton],
+   imports: [TuiButton, RouterLink],
    templateUrl: './header.component.html',
    styleUrl: './header.component.css'
 })

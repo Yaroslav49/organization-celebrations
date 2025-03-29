@@ -1,7 +1,33 @@
 <div class="header-bg">
     <div class="header">
-        <img src="/mini-logo.png" class="icon">
+        <a routerLink="/">
+            <img src="/mini-logo.png" class="icon">
+        </a>
+
+        <!-- для клиента -->
+        @if (isAuthenticated()) {
+            <div class="horizontal-list">
+                <a class="link">
+                    Создать заказ
+                </a>
+
+                <a class="link">
+                    Мои заказы
+                </a>
+            </div>
+        }
+        
         @if (!isAuthenticated()) {
+            <div class="horizontal-list">
+                <a class="link">
+                    Создать заказ
+                </a>
+
+                <a class="link">
+                    Стать исполнителем
+                </a>
+            </div>           
+
             <button tuiButton size="m" class="light-small-button auth-button" (click)="showDialog()">
                 Войти
             </button>
