@@ -23,6 +23,24 @@
     align-items: center;
 }
 
+.vertical-popup-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    position: relative;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-right: 3rem;
+}
+
+user-info {
+    position: absolute;
+    top: 100%;
+    z-index: 1000;
+}
+
 /* картинки */
 .icon {
     width: auto;
@@ -42,6 +60,20 @@
 [tuiAppearance].auth-button {
     margin-right: 3rem;
     font-weight: normal;
+}
+[tuiAppearance].drop-down-button {
+    background-color: var(--white);
+    border-radius: 0;
+}
+[tuiAppearance].drop-down-button:hover {
+    background-color: var(--light-gray);
+}
+[tuiAppearance].drop-down-button.active {
+    background-color: var(--middle-gray);
+}
+
+[tuiAppearance].icon {
+    font-size: 2rem;
 }
 
 .link {

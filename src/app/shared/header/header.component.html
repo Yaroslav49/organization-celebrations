@@ -4,33 +4,53 @@
             <img src="/mini-logo.png" class="icon">
         </a>
 
-        <!-- для клиента -->
         @if (isAuthenticated()) {
-            <div class="horizontal-list">
-                <a class="link">
-                    Создать заказ
-                </a>
+        <!-- для клиента -->
+        <div class="horizontal-list">
+            <a class="link">
+                Создать заказ
+            </a>
 
-                <a class="link">
-                    Мои заказы
-                </a>
-            </div>
-        }
-        
-        @if (!isAuthenticated()) {
-            <div class="horizontal-list">
-                <a class="link">
-                    Создать заказ
-                </a>
+            <a class="link">
+                Мои заказы
+            </a>
+        </div>
 
-                <a class="link">
-                    Стать исполнителем
-                </a>
-            </div>           
-
-            <button tuiButton size="m" class="light-small-button auth-button" (click)="showDialog()">
-                Войти
+        <!-- выпадающий профиль пользователя -->
+        <div class="vertical-popup-list">
+            <button tuiButton class="drop-down-button" (click)="toggleUserInfo()"
+                [class.active]="isUserInfoVisible">
+                <tui-avatar 
+                    [src]="getPhotoUrl()"
+                    size="m"
+                />
+                <tui-icon 
+                    icon="@tui.chevron-down"
+                    [style.color]="'var(--gray)'"
+                    [style.font-size.px]="12"
+                />
             </button>
+
+            @if (isUserInfoVisible) {
+                <user-info></user-info>
+            }           
+        </div>
+        }
+
+        @if (!isAuthenticated()) {
+        <div class="horizontal-list">
+            <a class="link">
+                Создать заказ
+            </a>
+
+            <a class="link">
+                Стать исполнителем
+            </a>
+        </div>
+
+        <button tuiButton size="m" class="light-small-button auth-button" (click)="showAuthDialog()">
+            Войти
+        </button>
         }
 
     </div>

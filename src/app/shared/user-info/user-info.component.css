@@ -1,0 +1,29 @@
+
+/* контейнеры */
+.content {
+    background-color: var(--white);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 0 16px var(--shadow-gray);
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* текст */
+.main-text {
+    font-family: var(--main-font);
+}
+
+/* кнопки */
+[tuiAppearance].light-small-button {
+    background-color: var(--super-light-violet);
+    border-radius: 1em;
+    font-family: var(--main-font);
+    color: black;
+}
+[tuiAppearance].light-small-button:hover {
+    background-color: var(--light-violet);
+}

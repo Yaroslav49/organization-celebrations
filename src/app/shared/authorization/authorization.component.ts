@@ -9,7 +9,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 @Component({
    selector: 'authorization',
    imports: [TuiButton, TuiInputModule, ReactiveFormsModule],
-   providers: [TuiDialogService, AuthorizationService],
+   providers: [TuiDialogService],
    templateUrl: './authorization.component.html',
    styleUrl: './authorization.component.css',
    changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,9 +21,9 @@ export class AuthorizationComponent {
    })
    authError: boolean = false;
 
-   constructor(private authService: AuthorizationService, private router: Router) { }
+   readonly context = injectContext<TuiDialogContext<void,void>>();
 
-   public readonly context = injectContext<TuiDialogContext<void,void>>();
+   constructor(private authService: AuthorizationService, private router: Router) { }
 
    protected onSubmit():void {
       this.authService.login(
@@ -33,9 +33,13 @@ export class AuthorizationComponent {
             if (result) {
                this.authError = false;
                this.context.completeWith();
-               console.log(Boolean(this.router.navigate(["/open"])));
             } else {
                this.authError = true;
+               let errorMessage: HTMLElement | null = document.getElementById('error');
+               if (errorMessage) {
+                  errorMessage.textContent = 'Ошибка: аккаунт с таким логином и паролем не найден';
+               }            
+               console.log('authError!');
             }
          }
       });
@@ -43,5 +47,5 @@ export class AuthorizationComponent {
 
    protected isAuthenticated(): boolean {
       return this.authService.isAuthenticated();
-   }
+   } 
 }
