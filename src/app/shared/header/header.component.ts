@@ -5,6 +5,7 @@ import { AuthorizationComponent } from '../authorization/authorization.component
 import { AuthorizationService } from '../../services/authorization.service';
 import { RouterLink } from '@angular/router';
 import { UserInfoComponent } from '../user-info/user-info.component';
+import { Role } from '../../services/role.model';
 
 @Component({
    selector: 'app-header',
@@ -13,7 +14,8 @@ import { UserInfoComponent } from '../user-info/user-info.component';
    styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-   public constructor(private authService: AuthorizationService) { }
+
+   Role = Role;
 
    private readonly authDialog = tuiDialog(AuthorizationComponent, {
       dismissible: true,
@@ -21,6 +23,8 @@ export class HeaderComponent {
    });
 
    isUserInfoVisible = false;
+
+   public constructor(private authService: AuthorizationService) { }
 
    toggleUserInfo() {
       this.isUserInfoVisible = !this.isUserInfoVisible;
@@ -32,6 +36,10 @@ export class HeaderComponent {
 
    getPhotoUrl(): string {
       return this.authService.photoUrl;
+   }
+
+   getUserRole(): Role {
+      return this.authService.role;
    }
 
    protected showAuthDialog(): void {

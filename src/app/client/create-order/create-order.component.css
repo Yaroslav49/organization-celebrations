@@ -1,0 +1,121 @@
+/* контейнеры */
+.main-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.input-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* картинки */
+[tuiAppearance].icon {
+    font-size: 1rem;
+}
+
+/* поля ввода */
+.input {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--gray);
+    padding: 0.5em;
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid var(--violet);
+}
+
+input.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+
+.select {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--gray);
+    padding: 0.5em;
+    width: 100%;
+}
+
+option:hover {
+    background-color: var(--violet);
+}
+
+
+
+textarea {
+    width: calc(100% - 1rem);
+}
+
+/* тексты */
+.header-text {
+    font-family: var(--main-font);
+    font-size: 1.5em;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+}
+
+.sub-header-text {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+}
+
+.main-text {
+    font-family: var(--main-font);
+    font-size: 1rem;
+}
+
+.sub-text {
+    font-family: var(--main-font);
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+/* кнопки */
+[tuiAppearance].full-width-button {
+    width: 100%;
+}
+
+/* другое */
+.left-indent {
+    margin-left: 1rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.outer {
+    padding: 2rem;
+}
+
+.zero-top-indent {
+    margin-top: 0;
+}

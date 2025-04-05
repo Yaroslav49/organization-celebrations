@@ -1,14 +1,26 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { catchError, map, Observable, of } from "rxjs";
+import { jwtDecode } from 'jwt-decode';
+import { Role } from "./role.model";
 
 @Injectable({ providedIn: 'root' })
 export class AuthorizationService {
     isLoggedIn: boolean;
+    loginName: string = '';
+    role: Role = Role.GUEST;
     photoUrl: string;
+    balance: number = 0;
 
     constructor(private http: HttpClient) { 
-        this.isLoggedIn = (localStorage.getItem('jwt') != null)
+        var token = localStorage.getItem('jwt');
+        this.isLoggedIn = (token != null)
+        if (token != null) {
+            let decoded = Object(jwtDecode(token));
+            console.log(decoded);
+            this.loginName = decoded.sub ? decoded.sub : '';
+            this.role = decoded.role ? decoded.role : '';
+        }
         this.photoUrl = "@tui.user";
     }
  
@@ -23,6 +35,10 @@ export class AuthorizationService {
             .pipe(
                 map(response => {
                     localStorage.setItem('jwt', response.token);
+                    let decoded = Object(jwtDecode(response.token));
+                    console.log(decoded);
+                    this.loginName = decoded.sub ? decoded.sub : '';
+                    this.role = decoded.role ? decoded.role : '';
                     this.isLoggedIn = true;
                     return true;
                 }),

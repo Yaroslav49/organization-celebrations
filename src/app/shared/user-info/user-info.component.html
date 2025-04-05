@@ -1,4 +1,10 @@
 <div class="content">
+    <p class="main-text zero-top-indent">{{getUserLogin()}}</p>
+    <p class="main-text zero-top-indent">Баланс: {{getBalance()}} ₽</p>
+    <div class="group-link">
+        <a class="link">Пополнить</a>
+        <a class="link">Вывести</a>
+    </div>   
     <button tuiButton size="m" class="light-small-button" (click)="logout()">
         Выйти
     </button>

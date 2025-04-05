@@ -5,41 +5,48 @@
         </a>
 
         @if (isAuthenticated()) {
-        <!-- для клиента -->
-        <div class="horizontal-list">
-            <a class="link">
-                Создать заказ
-            </a>
+            <!-- для клиента -->
+            @if (getUserRole() == Role.CLIENT) {
+                <div class="horizontal-list">
+                    <a class="link" routerLink="create-order">
+                        Создать заказ
+                    </a>
 
-            <a class="link">
-                Мои заказы
-            </a>
-        </div>
+                    <a class="link">
+                        Мои заказы
+                    </a>
+                </div>
+            }
 
-        <!-- выпадающий профиль пользователя -->
-        <div class="vertical-popup-list">
-            <button tuiButton class="drop-down-button" (click)="toggleUserInfo()"
-                [class.active]="isUserInfoVisible">
-                <tui-avatar 
-                    [src]="getPhotoUrl()"
-                    size="m"
-                />
-                <tui-icon 
-                    icon="@tui.chevron-down"
-                    [style.color]="'var(--gray)'"
-                    [style.font-size.px]="12"
-                />
-            </button>
+            <!-- для мастера -->
+            @if (getUserRole() == Role.MASTER) {
+                <div class="horizontal-list">
+                    <a class="link">
+                        Свободные заказы
+                    </a>
 
-            @if (isUserInfoVisible) {
+                    <a class="link">
+                        Мои заказы
+                    </a>
+                </div>
+            }
+
+            <!-- выпадающий профиль пользователя -->
+            <div class="vertical-popup-list">
+                <button tuiButton class="drop-down-button" (click)="toggleUserInfo()" [class.active]="isUserInfoVisible">
+                    <tui-avatar [src]="getPhotoUrl()" size="m" />
+                    <tui-icon icon="@tui.chevron-down" [style.color]="'var(--gray)'" [style.font-size.px]="12" />
+                </button>
+
+                @if (isUserInfoVisible) {
                 <user-info></user-info>
-            }           
-        </div>
+                }
+            </div>
         }
 
         @if (!isAuthenticated()) {
         <div class="horizontal-list">
-            <a class="link">
+            <a class="link" routerLink="create-order">
                 Создать заказ
             </a>
 

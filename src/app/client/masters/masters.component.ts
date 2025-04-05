@@ -34,7 +34,10 @@ export class MastersComponent {
             this.masters = data.masters;
             if (data.photoUrl != null) {
                this.authService.photoUrl = data.photoUrl;
-            }           
+            }
+            if (data.balance != null) {
+               this.authService.balance = data.balance;
+            }         
          }
       });
    }

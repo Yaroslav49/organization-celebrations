@@ -1,0 +1,82 @@
+<div class="main-page bg">
+    <form [formGroup]="orderForm" class="cloud outer vertical-list">
+        <label class="sub-header-text zero-top-indent">Выберите специалиста</label>
+        <select name="service-name" class="select" formControlName="serviceName">
+            <option value="DECORATOR" selected>Декоратор</option>
+            <option value="HOST">Ведущий</option>
+            <option value="CHEF">Повар</option>
+            <option value="WAITER">Официант</option>
+            <option value="PHOTOGRAPHER">Фотограф</option>
+            <option value="VIDEOGRAPHER">Видеограф</option>
+            <option value="SOUND_ENGINEER">Звукорежиссёр</option>
+            <option value="LIGHT_ENGINEER">Светорежиссёр</option>
+        </select>
+
+        <label class="sub-header-text">Опишите задачу</label>
+        <textarea name="description" formControlName="description" rows="5" class="input"></textarea>
+
+        <label class="sub-header-text">Выберите даты</label>
+        <div class="full-width">
+            <tui-input-date-range
+                formControlName="dateRange"
+                [min]="minDay"
+                [tuiTextfieldSize]="'l'"
+                [tuiTextfieldLabelOutside]="true"
+                [style.box-shadow]="'none'"
+                [style.font]="'var(--main-font)'"
+                [style.border]="'1px solid var(--gray)'"
+            >
+                Выберите даты
+                <input placeholder="From - To" tuiTextfieldLegacy/>
+            </tui-input-date-range>
+        </div><br>
+
+        <div class="input-group">
+            <div class="input-label">
+                <tui-icon icon="@tui.map-pin" [style.color]="'black'" [background]="'@tui.map-pin'" class="icon" />
+                <label class="main-text">Адрес</label>
+            </div>
+            <input type="text" formControlName="address" class="input left-indent" />
+        </div><br>
+
+        <div class="input-group">
+            <div class="input-label">
+                <tui-icon icon="@tui.badge-russian-ruble" [style.color]="'black'"
+                    [background]="'@tui.badge-russian-ruble'" class="icon" />
+                <label class="main-text">Цена</label>
+            </div>
+            <input type="number" formControlName="price" min="0" step="100" class="input left-indent" />
+        </div>
+        
+
+        <!--div class="input-group">
+            <div class="input-label">
+                <tui-icon icon="@tui.calendar" [style.color]="'black'" [background]="'@tui.calendar'" class="icon" />
+                <label class="main-text">Даты</label>
+            </div>
+            <tui-input-date-range
+                formControlName="dateRange"
+                [min]="minDay"
+                [tuiTextfieldSize]="'m'"
+                [style.box-shadow]="'none'"
+            >
+                Выберите даты
+                <input placeholder="From - To" tuiTextfieldLegacy class="input-date"/>
+            </tui-input-date-range>
+        </div><br-->
+
+        @if (orderForm.invalid) {
+            <p class="sub-text">Заполните все поля для создания заказа</p>
+        }
+
+        <button 
+            tuiButton 
+            class="violet-button full-width-button"
+            type="submit"
+            [disabled]="orderForm.invalid"
+            (click)="onSubmit()"
+        >
+            Создать заказ
+        </button>
+    </form>
+</div>
