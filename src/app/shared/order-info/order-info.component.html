@@ -1,0 +1,34 @@
+<div class="vertical-list full-width">
+    <div class="horizontal-list-space-between full-width">
+        <h2 class="header-text">{{ getServiceDisplayName(order.serviceType) }}</h2>
+        <h2 class="header-text">{{ order.price }} ₽</h2>
+    </div>
+
+    <hr class="line">
+    <p class="main-text">{{order.description}}</p>
+    <div class="horizontal-list big-gap full-width">
+        <div class="horizontal-list gap part-width">
+            <tui-icon icon="@tui.calendar" [style.color]="'var(--violet)'" [style.font-size.rem]="2" />
+            <p class="main-text">{{ formatDateRange(order.dateFrom, order.dateTo) }}</p>
+        </div>
+        <div class="horizontal-list gap">
+            <tui-icon icon="@tui.map-pin" [style.color]="'var(--violet)'" [style.font-size.rem]="2" />
+            <p class="main-text">{{ order.address }}</p>
+        </div>
+    </div>
+
+    @if (getName()) {
+    <hr class="line">
+    <div class="horizontal-list big-gap full-width">
+        <div class="horizontal-list gap">
+            <p class="main-text">{{ getName() }}</p>
+        </div>
+        <div class="horizontal-list gap round-light-bg">
+            <tui-icon icon="@tui.phone" [style.color]="'var(--gray)'" [style.font-size.rem]="1.5" />
+            <p class="main-text">{{ getPhone() }}</p>
+        </div>
+    </div>
+    } @else {
+        <br>
+    }
+</div>

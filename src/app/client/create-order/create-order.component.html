@@ -47,26 +47,13 @@
             </div>
             <input type="number" formControlName="price" min="0" step="100" class="input left-indent" />
         </div>
-        
-
-        <!--div class="input-group">
-            <div class="input-label">
-                <tui-icon icon="@tui.calendar" [style.color]="'black'" [background]="'@tui.calendar'" class="icon" />
-                <label class="main-text">Даты</label>
-            </div>
-            <tui-input-date-range
-                formControlName="dateRange"
-                [min]="minDay"
-                [tuiTextfieldSize]="'m'"
-                [style.box-shadow]="'none'"
-            >
-                Выберите даты
-                <input placeholder="From - To" tuiTextfieldLegacy class="input-date"/>
-            </tui-input-date-range>
-        </div><br-->
 
         @if (orderForm.invalid) {
             <p class="sub-text">Заполните все поля для создания заказа</p>
+        } @else if (error) {
+            <p id="error" class="error">{{error}}</p>
+        } @else {
+            <br>
         }
 
         <button 

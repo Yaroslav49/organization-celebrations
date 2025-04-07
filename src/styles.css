@@ -44,13 +44,20 @@ body {
 /* buttons */
 [tuiAppearance].violet-button {
     background-color: var(--violet);
+    font-family: var(--main-font);
 }
 [tuiAppearance].violet-button:hover, [tuiAppearance].violet-button:disabled {
     background-color: var(--dark-violet);
 }
 
+[tuiAppearance].round-button {
+    border-radius: 2em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
 [tuiAppearance].yellow-button {
-    background-color: var(--yellow);
+    background-color: var(--orange);
 }
 [tuiAppearance].yellow-button:hover {
     background-color: var(--dark-yellow);

@@ -1,0 +1,25 @@
+/* контейнеры */
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+/* тексты */
+.header-text {
+    font-family: var(--main-font);
+    font-weight: lighter;
+    margin-block-start: 0.5rem;
+    margin-block-end: 2rem;
+    font-size: 2rem;
+    text-align: center; 
+    word-break: break-word;
+    line-height: 1.5;
+}
+
+/* кнопки */
+[tuiAppearance].full-width-button {
+    width: 100%;
+}

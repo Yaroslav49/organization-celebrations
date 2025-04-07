@@ -1,0 +1,67 @@
+/* контейнеры */
+.horizontal-list, .horizontal-list-space-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.horizontal-list-space-between {
+    justify-content: space-between;
+}
+
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* всякие свойства */
+
+.full-width {
+    width: 100%;
+}
+
+.big-gap {
+    gap: 2rem;
+}
+
+.gap {
+    gap: 0.5rem;
+}
+
+.part-width {
+    width: max(25%, 12rem);
+}
+
+/* текст */
+.main-text {
+    font-family: var(--main-font);
+    font-size: 1rem;
+}
+
+.header-text {
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    font-weight: lighter;
+    margin-top: 0;
+}
+
+/* другое */
+.line {
+    border: 1px solid var(--shadow-gray);
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.round-light-bg {
+    border-radius: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 1rem;
+    /*background: var(--light-yellow);*/
+    border: 2px dashed var(--gray);
+}

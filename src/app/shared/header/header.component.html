@@ -12,7 +12,7 @@
                         Создать заказ
                     </a>
 
-                    <a class="link">
+                    <a class="link" routerLink="client/my-orders">
                         Мои заказы
                     </a>
                 </div>
@@ -46,11 +46,11 @@
 
         @if (!isAuthenticated()) {
         <div class="horizontal-list">
-            <a class="link" routerLink="create-order">
+            <a class="link" (click)="showOfferLogInDialog(textOfferClient)">
                 Создать заказ
             </a>
 
-            <a class="link">
+            <a class="link" (click)="showOfferLogInDialog(textOfferMaster)">
                 Стать исполнителем
             </a>
         </div>

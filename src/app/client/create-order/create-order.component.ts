@@ -17,6 +17,7 @@ export class CreateOrderComponent {
    readonly tomorrow: Date;
    readonly minDay: TuiDay;
    orderForm: FormGroup;
+   error: string | null = null;
 
    constructor(private ordersService: OrdersService) {
       this.today = new Date();
@@ -37,11 +38,12 @@ export class CreateOrderComponent {
       this.ordersService.createOrder(
          this.readOrderByForm()
       ).subscribe({
-         next: (result: boolean) => {
-            if (result) {
-               console.log("> creating order success");
+         next: (result: string) => {
+            if (result == "ok") {
+               this.error = null;
             } else {
-               console.log('> creating order failed');
+               console.log(`error: ${result}`);
+               this.error = result;
             }
          }
       });
@@ -50,7 +52,7 @@ export class CreateOrderComponent {
    protected readOrderByForm(): Order {
       var dateRange = this.orderForm.controls['dateRange'].value;
       return {
-         serviceName: this.orderForm.controls['serviceName'].value,
+         serviceType: this.orderForm.controls['serviceName'].value,
          description: this.orderForm.controls['description'].value,
          price: this.orderForm.controls['price'].value,
          address: this.orderForm.controls['address'].value,

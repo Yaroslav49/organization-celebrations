@@ -6,6 +6,7 @@ import { AuthorizationService } from '../../services/authorization.service';
 import { RouterLink } from '@angular/router';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { Role } from '../../services/role.model';
+import { OfferLogInComponent } from '../offer-log-in/offer-log-in.component';
 
 @Component({
    selector: 'app-header',
@@ -21,6 +22,14 @@ export class HeaderComponent {
       dismissible: true,
       size: 's',
    });
+
+   private readonly offerLogInDialog = tuiDialog(OfferLogInComponent, {
+      dismissible: true,
+      size: 's',
+   });
+
+   readonly textOfferClient: string = "Войдите в аккаунт, чтобы создать заказ";
+   readonly textOfferMaster: string = "Войдите в аккаунт исполнителя";
 
    isUserInfoVisible = false;
 
@@ -49,6 +58,16 @@ export class HeaderComponent {
          },
          complete: () => {
             console.info('Dialog closed');
+         },
+      });
+   }
+
+   protected showOfferLogInDialog(text: string): void {
+      this.offerLogInDialog(text).subscribe({
+         next: (command) => {
+            if (command == 'auth') {
+               this.showAuthDialog();
+            }
          },
       });
    }

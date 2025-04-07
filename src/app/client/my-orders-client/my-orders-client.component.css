@@ -1,0 +1,36 @@
+/* контейнеры */
+.main-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* регулирует ширину карточки заказа */
+.main-content-page {
+    max-width: 85vw;
+    width: min(65vw, 760px)
+}
+
+.zero-bottom-indent {
+    margin-bottom: 0;
+}
+
+/* текст */
+.header-text {
+    font-family: var(--main-font);
+    font-weight: lighter;
+}
+
+.link {
+    display: block;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    color: var(--violet);
+    text-decoration: none;
+    margin-left: 1rem;
+}
+.link:hover {
+    color: var(--orange);
+}

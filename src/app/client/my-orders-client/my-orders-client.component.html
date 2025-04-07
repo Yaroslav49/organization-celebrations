@@ -1,0 +1,17 @@
+<main class="bg main-page">
+    @if (orders.length > 0) {
+        <h2 class="header-text main-content-page zero-bottom-indent">Мои заказы</h2>
+    }
+    
+    @for (order of orders; track order.id) {
+        <order-client [order]="order"></order-client>
+    } @empty {
+        <!-- сюда дописать страницу отсутствия заказов -->
+        <div class="cloud sorry-card main-text">
+            <h2 class="header-text">У вас пока нет заказов</h2>
+            <img src="sorry.png" class="photo">
+            <a class="link" routerLink="create-order">Создать заказ</a>
+        </div>
+    }
+    <br>
+</main>
