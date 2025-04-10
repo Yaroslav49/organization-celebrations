@@ -1,17 +1,27 @@
 <main class="bg main-page">
-    @if (orders.length > 0) {
-        <h2 class="header-text main-content-page zero-bottom-indent">Мои заказы</h2>
-    }
-    
-    @for (order of orders; track order.id) {
-        <order-client [order]="order"></order-client>
-    } @empty {
-        <!-- сюда дописать страницу отсутствия заказов -->
-        <div class="cloud sorry-card main-text">
-            <h2 class="header-text">У вас пока нет заказов</h2>
-            <img src="sorry.png" class="photo">
-            <a class="link" routerLink="create-order">Создать заказ</a>
+    <div class="vertical-left-list">
+        @if (!orderListIsEmpty()) {
+        <h2 class="header-left-text">Мои заказы</h2>
+        }
+        <tui-accordion class="accordion">
+            @for (statusCode of statusCodes; track $index) {
+                @if (orderList[statusCode]) {
+                    <button tuiAccordion class="text">{{statusNames[$index]}}</button>
+                    <tui-expand>
+                        <list-order [orders]="orderList[statusCode]" [isClient]="true" (orderChanged)="updateOrders()"></list-order>
+                    </tui-expand>
+                }
+            }
+        </tui-accordion>
+
+        @if (orderListIsEmpty()) {
+        <div class="cloud vertical-list">
+            <h2 class="header-text-without-margin">Вы ещё не создавали заказы - самое время начать!</h2>
+            <img src="unknown.png" class="photo">
+            <button tuiButton class="violet-button round-button" routerLink="/create-order/-1">Создать заказ</button>
         </div>
-    }
-    <br>
+        }
+        <br>
+    </div>
+
 </main>

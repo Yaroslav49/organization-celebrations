@@ -1,0 +1,9 @@
+<div class="vertical-list">
+    @for (order of orders; track order.id) {
+        @if (isClient) {
+            <order-client [order]="order" (orderChanged)="onOrderChanged()"></order-client>
+        } @else {
+            <order-master [order]="order" (orderChanged)="onOrderChanged()"></order-master>
+        }
+    }
+</div>

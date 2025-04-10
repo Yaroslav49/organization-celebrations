@@ -4,7 +4,8 @@ import { TuiButton, TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
 import { TuiInputModule } from '@taiga-ui/legacy';
 import { AuthorizationService } from '../../services/authorization.service';
 import { Router } from '@angular/router';
-import {injectContext} from '@taiga-ui/polymorpheus';
+import { injectContext } from '@taiga-ui/polymorpheus';
+import { Role } from '../../services/role.model';
 
 @Component({
    selector: 'authorization',
@@ -32,6 +33,9 @@ export class AuthorizationComponent {
          next: (result: boolean) => {
             if (result) {
                this.authError = false;
+               if (this.authService.role == Role.MASTER) {
+                  this.router.navigate(['/public-orders']);
+               }
                this.context.completeWith();
             } else {
                this.authError = true;

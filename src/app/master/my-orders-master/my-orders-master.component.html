@@ -1,0 +1,29 @@
+<main class="bg main-page">
+    <div class="vertical-left-list">
+        @if (!orderListIsEmpty()) {
+        <h2 class="header-left-text">Мои заказы</h2>
+        }
+        <tui-accordion class="accordion">
+            @for (statusCode of statusCodes; track $index) {
+                @if (orderList[statusCode]) {
+                    <button tuiAccordion class="text">{{statusNames[$index]}}</button>
+                    <tui-expand>
+                        <list-order [orders]="orderList[statusCode]" [isClient]="false" (orderChanged)="updateOrders()"></list-order>
+                    </tui-expand>
+                    }
+            }
+
+        </tui-accordion>
+
+        @if (orderListIsEmpty()) {
+        <div class="cloud vertical-list">
+            <h2 class="header-text-without-margin">У вас пока нет заказов</h2>
+            <img src="unknown.png" class="photo">
+            <h2 class="header-text-without-margin">Попробуйте поискать
+                <a class="line-display-link" routerLink="/public-orders">свободные заказы</a>
+            </h2>
+        </div>
+        }
+        <br>
+    </div>
+</main>

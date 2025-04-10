@@ -1,0 +1,18 @@
+<form [formGroup]="ratingForm" class="vertical-list outlet">
+
+    <h2 class="text zero-top-indent">Оцените мастера</h2>
+    <tui-rating formControlName="evaluation" class="rating"></tui-rating>
+
+    <h2 class="text">Оставьте отзыв</h2>
+    <textarea name="description" formControlName="description" rows="5" class="input"></textarea><br>
+
+    <button
+        tuiButton
+        class="violet-button full-width-button"
+        type="submit"
+        [disabled]="ratingForm.invalid"
+        (click)="onSubmit()"
+    >
+        Оценить
+    </button>
+</form>

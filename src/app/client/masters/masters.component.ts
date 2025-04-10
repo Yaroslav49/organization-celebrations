@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MastersPage } from './model/masters-page.model';
 import { AuthorizationService } from '../../services/authorization.service';
+import { Role } from '../../services/role.model';
 
 @Component({
    selector: 'app-masters',
@@ -20,6 +21,7 @@ export class MastersComponent {
    masters: Master[] = [];
 
    private subscription: Subscription;
+   private nullImagePath: string = "http://localhost:9090/browser/zaedu/null";
 
    constructor(private mastersService: MastersService, private activateRoute: ActivatedRoute, private authService: AuthorizationService) {
       this.subscription = activateRoute.params.subscribe(params => {
@@ -32,7 +34,7 @@ export class MastersComponent {
       this.mastersService.getMastersPage(this.category).subscribe({
          next: (data: MastersPage) => {
             this.masters = data.masters;
-            if (data.photoUrl != null) {
+            if (data.photoUrl != null && data.photoUrl != this.nullImagePath) {
                this.authService.photoUrl = data.photoUrl;
             }
             if (data.balance != null) {

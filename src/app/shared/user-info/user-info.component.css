@@ -41,6 +41,7 @@
     background-color: var(--super-light-violet);
     border-radius: 1em;
     font-family: var(--main-font);
+    font-weight: normal;
     color: black;
 }
 [tuiAppearance].light-small-button:hover {

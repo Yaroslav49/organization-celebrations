@@ -4,20 +4,27 @@
 
         @if (order.status == "IN_PROGRESS") {
             <div class="horizontal-list">
-                <button tuiButton class="violet-button round-button">
-                    <tui-icon icon="@tui.check" [style.color]="'var(--white)'" [style.font-size.rem]="1.5" />
+                <button tuiButton class="violet-button round-button" (click)="closeOrder()">
+                    <tui-icon
+                        icon="@tui.check"
+                        [style.color]="'var(--white)'"
+                        [style.font-size.rem]="1.5"
+                    />
                     Закрыть заказ
                 </button>
-                <a class="link" href="https://steamuserimages-a.akamaihd.net/ugc/1622975509529861148/AE63D68F4580132BF776E9EA517A8B5DECC1FA8B/"
-                >Обратиться в поддержку</a>
-            </div>           
+                <a class="link" >Обратиться в поддержку</a>
+            </div>
         }
 
         @if (order.status == "PLACED") {
-            <button tuiButton class="yellow-button round-button">
+            <button tuiButton class="orange-button round-button" (click)="cancelOrder()">
                 <tui-icon icon="@tui.x" [style.color]="'var(--white)'" [style.font-size.rem]="1.5" />
                 Отменить заказ
             </button>
+        }
+
+        @if (order.status == "COMPLETED") {
+            <a class="link">Обратиться в поддержку</a>
         }
     </div>
 </div>

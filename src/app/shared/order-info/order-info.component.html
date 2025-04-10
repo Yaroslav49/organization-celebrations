@@ -23,12 +23,15 @@
         <div class="horizontal-list gap">
             <p class="main-text">{{ getName() }}</p>
         </div>
+        @if (getPhone()) {
         <div class="horizontal-list gap round-light-bg">
             <tui-icon icon="@tui.phone" [style.color]="'var(--gray)'" [style.font-size.rem]="1.5" />
             <p class="main-text">{{ getPhone() }}</p>
         </div>
+        }
+
     </div>
     } @else {
-        <br>
+    <br>
     }
 </div>

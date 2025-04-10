@@ -1,0 +1,46 @@
+/* контейнеры */
+.main-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* регулирует ширину карточки заказа */
+.main-content-page {
+    max-width: 85vw;
+    width: min(65vw, 760px)
+}
+
+.zero-bottom-indent {
+    margin-bottom: 0;
+}
+
+/* текст */
+.header-text {
+    font-family: var(--main-font);
+    font-weight: lighter;
+}
+
+.header-text-without-margin {
+    font-family: var(--main-font);
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* картинки */
+.photo {
+    width: min(50vw, 500px);
+    object-fit: cover;
+    border-radius: 5px;
+}

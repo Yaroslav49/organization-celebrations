@@ -4,14 +4,13 @@ import { Role } from "./role.model";
 import { inject } from "@angular/core";
 
 export const RouteGuardMaster: CanActivateFn = () => {
-    var role: Role = inject(AuthorizationService).role;
-    var router = inject(Router);
-    console.log(role);
- 
-    if (role == Role.MASTER) {
-       return true;
-    } else {
-       router.navigate(['']);
-       return false;
-    }
- }
+   var role: Role = inject(AuthorizationService).role;
+   var router = inject(Router);
+
+   if (role == Role.MASTER) {
+      return true;
+   } else {
+      router.navigate(['']);
+      return false;
+   }
+}

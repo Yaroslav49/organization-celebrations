@@ -3,6 +3,8 @@ import { Master } from '../model/master.model';
 import { Service, ServiceName, ServiceNameDisplay } from '../model/service.model';
 import { TuiIcon, TuiButton, TuiDialogService } from '@taiga-ui/core';
 import { Router } from '@angular/router';
+import { DialogAuthorizationService } from '../../../services/dialog-authorization.service';
+import { AuthorizationService } from '../../../services/authorization.service';
 
 @Component({
    selector: 'card-master',
@@ -16,6 +18,16 @@ export class CardMasterComponent {
 
    private readonly dialogs = inject(TuiDialogService);
 
+   constructor(private router: Router, private authService: AuthorizationService, protected dialogAuthService: DialogAuthorizationService) {}
+
+   protected offerOrder() {
+      if (this.authService.isLoggedIn) {
+         this.router.navigate(['/create-order/', this.master.id]);
+      } else {
+         this.dialogAuthService.showOfferLogInClient2Dialog();
+      }
+   } 
+
    protected showDialog(url: string): void {
       this.dialogs
          .open(
@@ -25,11 +37,11 @@ export class CardMasterComponent {
          .subscribe();
    }
 
-   getServiceDisplayName(serviceName: ServiceName): string {
+   protected getServiceDisplayName(serviceName: ServiceName): string {
       return ServiceNameDisplay[serviceName];
    }
 
-   sortServices(services: Service[]): Service[] {
+   protected sortServices(services: Service[]): Service[] {
       return services.sort((a: Service, b: Service) => {
          if (b.serviceName == this.category) {
             return 1;
@@ -39,7 +51,7 @@ export class CardMasterComponent {
       })
    }
 
-   getMarksEnding(count: number): string {
+   protected getMarksEnding(count: number): string {
       const lastDigit = count % 10;
       const lastTwoDigits = count % 100;
 

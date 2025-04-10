@@ -1,0 +1,37 @@
+<div class="cloud main-content-page">
+    <div class="vertical-list">
+        <order-info [order]="order" [isClient]="false"></order-info>
+    </div>
+
+    @if (order.status == "PLACED") {
+        <button tuiButton class="violet-button round-button" (click)="takeOrder()">
+            Взять заказ
+        </button>
+    }
+
+    @if (order.status == "IN_PROGRESS" || order.status == "COMPLETED") {
+        <a class="link">Обратиться в поддержку</a>
+    }
+
+    @if (order.status == "PENDING") {
+        <div class="horizontal-list">
+            <button tuiButton class="violet-button round-button" (click)="acceptOrder()">
+                <tui-icon
+                    icon="@tui.check"
+                    [style.color]="'var(--white)'"
+                    [style.font-size.rem]="1.5"
+                />
+                Принять
+            </button>
+            <button tuiButton class="orange-button round-button" (click)="declineOrder()">
+                <tui-icon
+                    icon="@tui.x"
+                    [style.color]="'var(--white)'"
+                    [style.font-size.rem]="1.5"
+                />
+                Отклонить
+            </button>
+        </div>
+    }
+</div>
+

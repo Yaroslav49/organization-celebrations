@@ -1,0 +1,15 @@
+<main class="bg main-page">
+    @if (orders.length > 0) {
+        <h2 class="header-text main-content-page zero-bottom-indent">Доступные заказы</h2>
+    }
+    
+    @for (order of orders; track order.id) {
+        <order-master [order]="order" (orderChanged)="updateOrders()"></order-master>
+    } @empty {
+        <div class="cloud vertical-list">
+            <h2 class="header-text-without-margin">К сожалению, заказов по вашей специальности не найдено</h2>
+            <img src="sorry.png" class="photo">
+        </div>
+    }
+    <br>
+</main>

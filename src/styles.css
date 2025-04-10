@@ -16,6 +16,7 @@
     --light-yellow: #FFFFE8;
     --dark-yellow: #CCCE49;
     --orange: #ff6600;
+    --dark-orange: #c44e00;
 
     --main-font: 'Arial';
 }
@@ -57,10 +58,17 @@ body {
 }
 
 [tuiAppearance].yellow-button {
-    background-color: var(--orange);
+    background-color: var(--yellow);
 }
 [tuiAppearance].yellow-button:hover {
     background-color: var(--dark-yellow);
+}
+
+[tuiAppearance].orange-button {
+    background-color: var(--orange);
+}
+[tuiAppearance].orange-button:hover {
+    background-color: var(--dark-orange);
 }
 
 [tuiAppearance].light-button {
@@ -68,6 +76,7 @@ body {
     border-radius: 2em;
     font-family: var(--main-font);
     font-size: 1rem;
+    font-weight: normal;
     color: black;
 }
 [tuiAppearance].light-button:hover {

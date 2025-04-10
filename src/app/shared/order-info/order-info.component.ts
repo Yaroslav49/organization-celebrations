@@ -19,6 +19,9 @@ export class OrderInfoComponent {
 
    getName(): string | null {
       if (this.isClient && this.order.nameMaster) {
+         if (this.order.nameMaster == "Мастер не назначен") {
+            return "Исполнитель: не назначен";
+         }
          return `Исполнитель: ${this.order.nameMaster}`;
       } else if (!this.isClient && this.order.nameClient) {
          return `Заказчик: ${this.order.nameClient}`;

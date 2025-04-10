@@ -7,6 +7,22 @@
     align-items: center;
 }
 
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.vertical-left-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 /* регулирует ширину карточки заказа */
 .main-content-page {
     max-width: 85vw;
@@ -18,19 +34,41 @@
 }
 
 /* текст */
+.text {
+    font-family: var(--main-font);
+}
+
 .header-text {
     font-family: var(--main-font);
     font-weight: lighter;
 }
 
-.link {
-    display: block;
+.header-left-text {
     font-family: var(--main-font);
-    font-size: 1rem;
-    color: var(--violet);
-    text-decoration: none;
+    font-weight: lighter;
     margin-left: 1rem;
+    margin-bottom: 1rem;
 }
-.link:hover {
-    color: var(--orange);
+
+.header-text-without-margin {
+    font-family: var(--main-font);
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* картинки */
+.photo {
+    width: min(50vw, 500px);
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* accordion */
+.accordion {
+    width: auto;
+ 
+    [tuiAccordion] {
+        font-family: var(--main-font);
+        font-size: 1rem;
+    }
 }

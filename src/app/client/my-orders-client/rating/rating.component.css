@@ -1,0 +1,53 @@
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.outlet {
+    padding: 1em;
+}
+
+
+/* тексты */
+.text {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+/* поля ввода */
+.input {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--gray);
+    padding: 0.5em;
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid var(--violet);
+}
+
+input.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+
+textarea {
+    width: calc(100% - 1rem);
+    resize: vertical;
+    min-height: 2rem;
+    max-height: 50vh;
+}
+
+/* кнопки */
+[tuiAppearance].full-width-button {
+    width: 100%;
+}
+
+/* прочее */
+.zero-top-indent {
+    margin-top: 0;
+}

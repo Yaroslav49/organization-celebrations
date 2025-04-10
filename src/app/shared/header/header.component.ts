@@ -1,12 +1,11 @@
 import { Component, HostListener } from '@angular/core';
-import { TuiButton, tuiDialog, TuiIcon } from '@taiga-ui/core';
+import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar } from '@taiga-ui/kit';
-import { AuthorizationComponent } from '../authorization/authorization.component';
 import { AuthorizationService } from '../../services/authorization.service';
 import { RouterLink } from '@angular/router';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { Role } from '../../services/role.model';
-import { OfferLogInComponent } from '../offer-log-in/offer-log-in.component';
+import { DialogAuthorizationService } from '../../services/dialog-authorization.service';
 
 @Component({
    selector: 'app-header',
@@ -18,22 +17,9 @@ export class HeaderComponent {
 
    Role = Role;
 
-   private readonly authDialog = tuiDialog(AuthorizationComponent, {
-      dismissible: true,
-      size: 's',
-   });
-
-   private readonly offerLogInDialog = tuiDialog(OfferLogInComponent, {
-      dismissible: true,
-      size: 's',
-   });
-
-   readonly textOfferClient: string = "Войдите в аккаунт, чтобы создать заказ";
-   readonly textOfferMaster: string = "Войдите в аккаунт исполнителя";
-
    isUserInfoVisible = false;
 
-   public constructor(private authService: AuthorizationService) { }
+   public constructor(private authService: AuthorizationService, protected dialogAuthService: DialogAuthorizationService) { }
 
    toggleUserInfo() {
       this.isUserInfoVisible = !this.isUserInfoVisible;
@@ -49,31 +35,6 @@ export class HeaderComponent {
 
    getUserRole(): Role {
       return this.authService.role;
-   }
-
-   protected showAuthDialog(): void {
-      this.authDialog().subscribe({
-         next: (data) => {
-            console.info(`Dialog emitted data = ${data}`);
-         },
-         complete: () => {
-            console.info('Dialog closed');
-         },
-      });
-   }
-
-   protected showOfferLogInDialog(text: string): void {
-      this.offerLogInDialog(text).subscribe({
-         next: (command) => {
-            if (command == 'auth') {
-               this.showAuthDialog();
-            }
-         },
-      });
-   }
-
-   protected logout(): void {
-      this.authService.logout();
    }
 
    @HostListener('document:click', ['$event'])

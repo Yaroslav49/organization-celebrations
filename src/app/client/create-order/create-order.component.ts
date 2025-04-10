@@ -5,6 +5,8 @@ import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiInputDateRangeModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import { OrdersService } from '../../services/orders.service';
 import { Order } from '../model/order.model';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
    selector: 'create-order',
@@ -18,8 +20,11 @@ export class CreateOrderComponent {
    readonly minDay: TuiDay;
    orderForm: FormGroup;
    error: string | null = null;
+   masterId: number = -1;
+   
+   private subscription: Subscription;
 
-   constructor(private ordersService: OrdersService) {
+   constructor(private ordersService: OrdersService, private activateRoute: ActivatedRoute, private router: Router) {
       this.today = new Date();
       this.tomorrow = new Date(this.today);
       this.tomorrow.setDate(this.today.getDate() + 1);
@@ -32,21 +37,44 @@ export class CreateOrderComponent {
          dateRange: new FormControl(new TuiDayRange(this.minDay, this.minDay), Validators.required),
          price: new FormControl('', [Validators.required, Validators.min(0)]),
       })
+
+      this.subscription = activateRoute.params.subscribe(params => {
+         this.masterId = params["master-id"];
+      });
    }
 
    protected onSubmit(): void {
-      this.ordersService.createOrder(
-         this.readOrderByForm()
-      ).subscribe({
-         next: (result: string) => {
-            if (result == "ok") {
-               this.error = null;
-            } else {
-               console.log(`error: ${result}`);
-               this.error = result;
+      if (this.masterId < 0) {
+         // создание заказа без указания мастера
+         this.ordersService.createOrder(
+            this.readOrderByForm()
+         ).subscribe({
+            next: (result: string) => {
+               if (result == "ok") {
+                  this.error = null;
+                  this.router.navigate(['client/my-orders']);
+               } else {
+                  console.log(`error: ${result}`);
+                  this.error = result;
+               }
             }
-         }
-      });
+         });
+      } else {
+         // предложение заказа мастеру
+         this.ordersService.offerOrder(
+            this.readOrderByForm(), this.masterId
+         ).subscribe({
+            next: (result: string) => {
+               if (result == "ok") {
+                  this.error = null;
+                  this.router.navigate(['client/my-orders']);
+               } else {
+                  console.log(`error: ${result}`);
+                  this.error = result;
+               }
+            }
+         });
+      }
    }
 
    protected readOrderByForm(): Order {

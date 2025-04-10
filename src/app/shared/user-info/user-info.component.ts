@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthorizationService } from '../../services/authorization.service';
 import { TuiButton } from '@taiga-ui/core';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'user-info',
@@ -9,7 +10,7 @@ import { TuiButton } from '@taiga-ui/core';
    styleUrl: './user-info.component.css'
 })
 export class UserInfoComponent {
-   public constructor(private authService: AuthorizationService) { }
+   public constructor(private authService: AuthorizationService, private router: Router) { }
 
    getUserLogin(): string {
       return this.authService.loginName;
@@ -21,5 +22,6 @@ export class UserInfoComponent {
 
    protected logout(): void {
       this.authService.logout();
+      this.router.navigate(['']);
    }
 }

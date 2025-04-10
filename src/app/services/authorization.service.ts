@@ -52,6 +52,7 @@ export class AuthorizationService {
 
     logout(): void {
         localStorage.removeItem('jwt');
+        this.role = Role.GUEST;
         this.isLoggedIn = false;
     }
 

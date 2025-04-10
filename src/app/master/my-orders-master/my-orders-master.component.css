@@ -1,0 +1,86 @@
+/* контейнеры */
+.main-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.vertical-left-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* регулирует ширину карточки заказа */
+.main-content-page {
+    max-width: 85vw;
+    width: min(65vw, 760px)
+}
+
+.zero-bottom-indent {
+    margin-bottom: 0;
+}
+
+/* текст */
+.text {
+    font-family: var(--main-font);
+}
+
+.header-text {
+    font-family: var(--main-font);
+    font-weight: lighter;
+}
+
+.header-left-text {
+    font-family: var(--main-font);
+    font-weight: lighter;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.header-text-without-margin {
+    font-family: var(--main-font);
+    font-weight: lighter;
+    margin: 0;
+}
+
+.line-display-link {
+    display: inline;
+    font-family: var(--main-font);
+    font-size: 1em;
+    color: var(--violet);
+    text-decoration: underline dotted;
+}
+
+.line-display-link:hover {
+    color: var(--orange);
+}
+
+/* картинки */
+.photo {
+    width: min(50vw, 500px);
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* accordion */
+.accordion {
+    width: auto;
+ 
+    [tuiAccordion] {
+        font-family: var(--main-font);
+        font-size: 1rem;
+    }
+}

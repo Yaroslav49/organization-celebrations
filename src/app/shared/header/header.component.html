@@ -8,12 +8,16 @@
             <!-- для клиента -->
             @if (getUserRole() == Role.CLIENT) {
                 <div class="horizontal-list">
-                    <a class="link" routerLink="create-order">
+                    <a class="link" routerLink="/create-order/-1">
                         Создать заказ
                     </a>
 
-                    <a class="link" routerLink="client/my-orders">
+                    <a class="link" routerLink="/client/my-orders">
                         Мои заказы
+                    </a>
+
+                    <a class="link" routerLink="/masters/DECORATOR">
+                        Найти специалиста
                     </a>
                 </div>
             }
@@ -21,11 +25,11 @@
             <!-- для мастера -->
             @if (getUserRole() == Role.MASTER) {
                 <div class="horizontal-list">
-                    <a class="link">
+                    <a class="link" routerLink="/public-orders">
                         Свободные заказы
                     </a>
 
-                    <a class="link">
+                    <a class="link" routerLink="/master/my-orders">
                         Мои заказы
                     </a>
                 </div>
@@ -46,16 +50,20 @@
 
         @if (!isAuthenticated()) {
         <div class="horizontal-list">
-            <a class="link" (click)="showOfferLogInDialog(textOfferClient)">
+            <a class="link" (click)="dialogAuthService.showOfferLogInClientDialog()">
                 Создать заказ
             </a>
 
-            <a class="link" (click)="showOfferLogInDialog(textOfferMaster)">
+            <a class="link" (click)="dialogAuthService.showOfferLogInMasterDialog()">
                 Стать исполнителем
+            </a>
+
+            <a class="link" routerLink="/masters/DECORATOR">
+                Найти специалиста
             </a>
         </div>
 
-        <button tuiButton size="m" class="light-small-button auth-button" (click)="showAuthDialog()">
+        <button tuiButton size="m" class="light-small-button auth-button" (click)="dialogAuthService.showAuthDialog()">
             Войти
         </button>
         }
