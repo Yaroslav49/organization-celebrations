@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { Role } from '../../services/role.model';
 import { DialogAuthorizationService } from '../../services/dialog-authorization.service';
+import { MinioService } from '../../services/minio.service';
 
 @Component({
    selector: 'app-header',
